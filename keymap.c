@@ -13,7 +13,8 @@ enum custom_keycodes {
     PLACEHOLDER = SAFE_RANGE, // can always be here
     EPRM,
     VRSN,
-    RGB_SLD
+    RGB_SLD,
+    WK_SLSH
 };
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
@@ -43,19 +44,19 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 // KC_LBRC = Å; KC_BSLS = '; KC_EQL = ´; KC_RBRC = ¨; KC_FN3 = < KC_LABK = ;;
     [BASE] = KEYMAP( // layer 0 : default
             // left hand
-            NO_LESS,        KC_1,                 KC_2,                       KC_3,                          KC_4,                             KC_5,                         KC_LEFT,
-            KC_TAB,         KC_Q,                 KC_W,                       KC_E,                          KC_R,                             KC_T,                         TG(WORK),
+            NO_LESS,        KC_1,                 KC_2,                       KC_3,                          KC_4,                             KC_5,                                     KC_LEFT,
+            KC_TAB,         KC_Q,                 KC_W,                       KC_E,                          KC_R,                             KC_T,                                     TG(WORK),
             KC_BSPC,        KC_A,                 KC_S,                       KC_D,                          KC_F,                             KC_G,
-            KC_LSFT,        KC_Z,                 KC_X,                       KC_C,                          KC_V,                             KC_B,                         ALL_T(KC_NO),
+            KC_LSFT,        KC_Z,                 KC_X,                       KC_C,                          KC_V,                             KC_B,                                     ALL_T(KC_NO),
             CTL_T(NO_ACUT), KC_BSLS,              LALT(KC_LSFT),              KC_LEFT,                       KC_RGHT,
             ALT_T(KC_APP),  KC_LGUI,
             KC_HOME,
             KC_BSPC,        KC_DELT,              KC_END,
             // right hand
-            KC_RGHT,        KC_6,                 KC_7,                       KC_8,                          KC_9,                             KC_0,                         NO_PLUS,
-            TG(SYMB),       KC_Y,                 KC_U,                       KC_I,                          KC_O,                             KC_P,                         NO_AM,
-            KC_H,           KC_J,                 KC_K,                       KC_L,                          LT(MDIA,                          NO_AE),                       GUI_T(NO_OSLH),
-            MEH_T(KC_NO),   KC_N,                 KC_M,                       KC_COMM,                       KC_DOT,                           CTL_T(NO_MINS),               KC_RSFT,
+            KC_RGHT,        KC_6,                 KC_7,                       KC_8,                          KC_9,                             KC_0,                                     NO_PLUS,
+            TG(SYMB),       KC_Y,                 KC_U,                       KC_I,                          KC_O,                             KC_P,                                     NO_AM,
+            KC_H,           KC_J,                 KC_K,                       KC_L,                          LT(MDIA,                          NO_AE),                                   GUI_T(NO_OSLH),
+            MEH_T(KC_NO),   KC_N,                 KC_M,                       KC_COMM,                       KC_DOT,                           CTL_T(NO_MINS),                           KC_RSFT,
             KC_UP,          KC_DOWN,              NO_ALGR,                    NO_QUOT,                       KC_FN1,
             KC_LALT,        CTL_T(KC_ESC),
             KC_PGUP,
@@ -85,19 +86,19 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 // SYMBOLS
     [SYMB] = KEYMAP(
             // left hand
-            VRSN,           KC_F1,                KC_F2,                      KC_F3,                         KC_F4,                            KC_F5,                        KC_TRNS,
-            KC_TRNS,        KC_EXLM,              KC_AT,                      KC_LCBR,                       KC_RCBR,                          KC_PIPE,                      KC_TRNS,
+            VRSN,           KC_F1,                KC_F2,                      KC_F3,                         KC_F4,                            KC_F5,                                    KC_TRNS,
+            KC_TRNS,        KC_EXLM,              KC_AT,                      KC_LCBR,                       KC_RCBR,                          KC_PIPE,                                  KC_TRNS,
             KC_TRNS,        KC_HASH,              KC_DLR,                     KC_LPRN,                       KC_RPRN,                          KC_GRV,
-            KC_TRNS,        KC_PERC,              KC_CIRC,                    KC_LBRC,                       KC_RBRC,                          KC_TILD,                      KC_TRNS,
+            KC_TRNS,        KC_PERC,              KC_CIRC,                    KC_LBRC,                       KC_RBRC,                          KC_TILD,                                  KC_TRNS,
             EPRM,           KC_TRNS,              KC_TRNS,                    KC_TRNS,                       KC_TRNS,
             RGB_MOD,        KC_TRNS,
             KC_TRNS,
             RGB_VAD,        RGB_VAI,              KC_TRNS,
             // right hand
-            KC_TRNS,        KC_F6,                KC_F7,                      KC_F8,                         KC_F9,                            KC_F10,                       KC_F11,
-            KC_TRNS,        KC_UP,                KC_7,                       KC_8,                          KC_9,                             KC_ASTR,                      KC_F12,
+            KC_TRNS,        KC_F6,                KC_F7,                      KC_F8,                         KC_F9,                            KC_F10,                                   KC_F11,
+            KC_TRNS,        KC_UP,                KC_7,                       KC_8,                          KC_9,                             KC_ASTR,                                  KC_F12,
             KC_DOWN,        KC_4,                 KC_5,                       KC_6,                          KC_PLUS,                          KC_TRNS,
-            KC_TRNS,        KC_AMPR,              KC_1,                       KC_2,                          KC_3,                             KC_BSLS,                      KC_TRNS,
+            KC_TRNS,        KC_AMPR,              KC_1,                       KC_2,                          KC_3,                             KC_BSLS,                                  KC_TRNS,
             KC_TRNS,        KC_DOT,               KC_0,                       KC_EQL,                        KC_TRNS,
             RGB_TOG,        RGB_SLD,
             KC_TRNS,
@@ -126,19 +127,19 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  */
 // MEDIA AND MOUSE
     [MDIA] = KEYMAP(
-            KC_TRNS,        KC_TRNS,              KC_TRNS,                    KC_TRNS,                       KC_TRNS,                          KC_TRNS,                      KC_TRNS,
-            KC_TRNS,        KC_TRNS,              KC_TRNS,                    KC_MS_U,                       KC_TRNS,                          KC_TRNS,                      KC_TRNS,
+            KC_TRNS,        KC_TRNS,              KC_TRNS,                    KC_TRNS,                       KC_TRNS,                          KC_TRNS,                                  KC_TRNS,
+            KC_TRNS,        KC_TRNS,              KC_TRNS,                    KC_MS_U,                       KC_TRNS,                          KC_TRNS,                                  KC_TRNS,
             KC_TRNS,        KC_TRNS,              KC_MS_L,                    KC_MS_D,                       KC_MS_R,                          KC_TRNS,
-            KC_TRNS,        KC_TRNS,              KC_TRNS,                    KC_TRNS,                       KC_TRNS,                          KC_TRNS,                      KC_TRNS,
+            KC_TRNS,        KC_TRNS,              KC_TRNS,                    KC_TRNS,                       KC_TRNS,                          KC_TRNS,                                  KC_TRNS,
             KC_TRNS,        KC_TRNS,              KC_TRNS,                    KC_BTN1,                       KC_BTN2,
             KC_TRNS,        KC_TRNS,
             KC_TRNS,
             KC_TRNS,        KC_TRNS,              KC_TRNS,
             // right hand
-            KC_TRNS,        KC_TRNS,              KC_TRNS,                    KC_TRNS,                       KC_TRNS,                          KC_TRNS,                      KC_TRNS,
-            KC_TRNS,        KC_TRNS,              KC_TRNS,                    KC_TRNS,                       KC_TRNS,                          KC_TRNS,                      KC_TRNS,
+            KC_TRNS,        KC_TRNS,              KC_TRNS,                    KC_TRNS,                       KC_TRNS,                          KC_TRNS,                                  KC_TRNS,
+            KC_TRNS,        KC_TRNS,              KC_TRNS,                    KC_TRNS,                       KC_TRNS,                          KC_TRNS,                                  KC_TRNS,
             KC_TRNS,        KC_TRNS,              KC_TRNS,                    KC_TRNS,                       KC_TRNS,                          KC_MPLY,
-            KC_TRNS,        KC_TRNS,              KC_TRNS,                    KC_MPRV,                       KC_MNXT,                          KC_TRNS,                      KC_TRNS,
+            KC_TRNS,        KC_TRNS,              KC_TRNS,                    KC_MPRV,                       KC_MNXT,                          KC_TRNS,                                  KC_TRNS,
             KC_VOLU,        KC_VOLD,              KC_MUTE,                    KC_TRNS,                       KC_TRNS,
             KC_TRNS,        KC_TRNS,
             KC_TRNS,
@@ -168,19 +169,19 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 //WORKMAN
     [WORK] = KEYMAP(
             // left hand
-            NO_GRV,         KC_1,                 KC_2,                       KC_3,                          KC_4,                             KC_5,                         KC_LEFT,
-            KC_TAB,         KC_Q,                 KC_D,                       KC_R,                          KC_W,                             KC_B,                         TG(WORK),
+            NO_GRV,         KC_1,                 KC_2,                       KC_3,                          KC_4,                             KC_5,                                     KC_LEFT,
+            KC_TAB,         KC_Q,                 KC_D,                       KC_R,                          KC_W,                             KC_B,                                     TG(WORK),
             KC_BSPC,        KC_A,                 KC_S,                       KC_H,                          KC_T,                             KC_G,
-            KC_LSFT,        KC_Z,                 KC_X,                       KC_M,                          KC_V,                             KC_V,                         ALL_T(KC_NO),
+            KC_LSFT,        KC_Z,                 KC_X,                       KC_M,                          KC_V,                             KC_V,                                     ALL_T(KC_NO),
             CTL_T(NO_LESS), NO_GRTR,              LALT(KC_LSFT),              KC_LEFT,                       KC_RGHT,
             ALT_T(KC_APP),  KC_LGUI,
             KC_HOME,
             KC_BSPC,        KC_DELT,              KC_END,
             // right hand
-            KC_RGHT,        KC_6,                 KC_7,                       KC_8,                          KC_9,                             KC_0,                         NO_MINS,
-            TG(SYMB),       KC_J,                 KC_F,                       KC_U,                          KC_P,                             NO_SCLN,                      NO_PLUS,
-            KC_Y,           KC_N,                 KC_E,                       KC_O,                          LT(MDIA,                          KC_I),                        GUI_T(NO_APOS),
-            MEH_T(KC_NO),   KC_K,                 KC_L,                       KC_COMM,                       KC_DOT,                           KC_PSLS,                      KC_RSFT,
+            KC_RGHT,        KC_6,                 KC_7,                       KC_8,                          KC_9,                             KC_0,                                     NO_MINS,
+            TG(SYMB),       KC_J,                 KC_F,                       KC_U,                          KC_P,                             NO_SCLN,                                  NO_PLUS,
+            KC_Y,           KC_N,                 KC_E,                       KC_O,                          LT(MDIA,                          KC_I),                                    GUI_T(NO_APOS),
+            MEH_T(KC_NO),   KC_K,                 KC_L,                       KC_COMM,                       KC_DOT,                           WK_SLSH,                                  KC_RSFT,
             KC_UP,          KC_DOWN,              NO_ALGR,                    NO_QUOT,                       KC_FN1,
             KC_LALT,        CTL_T(KC_ESC),
             KC_PGUP,
@@ -213,6 +214,49 @@ const macro_t * action_get_macro(keyrecord_t *record, uint8_t id, uint8_t opt) {
     }
     return MACRO_NONE;
 };
+
+static bool is_shift_pressed = false;
+
+uint8_t get_shift(void) {
+    //TODO: This will fail if both shifts are pressed at once...
+    uint8_t shift_kc = KC_LSFT;
+
+    if (keyboard_report->mods & MOD_BIT(KC_RSFT)) {
+        shift_kc = KC_RSFT;
+    }
+
+    return shift_kc;
+}
+
+uint16_t get_custom_key(uint16_t keycode, bool shift) {
+   //Returns all custom keys listed in enum custom_keycodes (if this is a custom)
+   switch(keycode) {
+      case WK_SLSH:
+         if (shift) {
+            return NO_QUES; // ?
+         } else {
+            return KC_PSLS; // '/'
+         }
+      break;
+      default:
+         return keycode;
+         break;
+   }
+}
+
+void override_value(uint16_t keycode, bool shift) {
+   //uint8_t shift_kc;
+   uint16_t key = get_custom_key(keycode, shift);
+   // if (shift) {
+   //    shift_kc = get_shift();
+   //    unregister_code(shift_kc);
+   // }
+    register_code(key);
+    unregister_code(key);
+   //  if (shift) {
+   //    register_code(shift_kc);
+   // }
+}
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     switch (keycode) {
@@ -248,6 +292,32 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
             return false;
 
             break;
+
+        case KC_LSFT:  //Record Shift status
+        case KC_RSFT:
+            is_shift_pressed = record->event.pressed;
+            return true;
+
+            break;
+
+      //   case KC_1:
+        //
+      //       //TODO: Figure out how we can check current layer value
+      //       if (record->event.pressed && is_shift_pressed) {
+      //           override_value(NO_AM);
+      //           return false;
+      //       }
+        //
+      //       break;
+      case WK_SLSH:
+
+          //TODO: Figure out how we can check current layer value
+          if (record->event.pressed) {
+              override_value(WK_SLSH, is_shift_pressed);
+              return false;
+          }
+
+          break;
     }
     return true;
 }
