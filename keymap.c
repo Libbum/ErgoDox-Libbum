@@ -183,9 +183,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 //WORKMAN
     [WORK] = KEYMAP(
             // left hand
-            WK_TLD,      KC_1,                 KC_2,                        KC_3,                           KC_4,                              KC_5,                                      KC_LEFT,
+            WK_TLD,         KC_1,                 KC_2,                        KC_3,                           KC_4,                              KC_5,                                      KC_LEFT,
             KC_TAB,         KC_Q,                 KC_D,                        KC_R,                           KC_W,                              KC_B,                                      TG(WORK),
-            KC_BSPC,        KC_A,                 KC_S,                        KC_H,                           KC_T,                              KC_G,
+            GUI_T(KC_NO),   KC_A,                 KC_S,                        KC_H,                           KC_T,                              KC_G,
             KC_LSFT,        CTL_T(KC_Z),          KC_X,                        KC_M,                           KC_C,                              KC_V,                                      ALL_T(KC_NO),
             WK_LSQ,         WK_RSQ,               LALT(KC_LSFT),               KC_LEFT,                        KC_RGHT,
             ALT_T(KC_APP),  KC_LGUI,
@@ -194,7 +194,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
             // right hand
             KC_RGHT,        KC_6,                 KC_7,                        KC_8,                           KC_9,                              KC_0,                                      NO_MINS,
             TG(SYMB),       KC_J,                 KC_F,                        KC_U,                           KC_P,                              WK_SC,                                     WK_EQL,
-            KC_Y,           KC_N,                 KC_E,                        KC_O,                           LT(MDIA,                           KC_I),                                     GUI_T(WK_QUOT),
+            KC_Y,           KC_N,                 KC_E,                        KC_O,                           LT(MDIA,                           KC_I),                                     WK_QUOT,
             MEH_T(KC_NO),   KC_K,                 KC_L,                        WK_CMA,                         WK_DOT,                            WK_SLSH,                                   KC_RSFT,
             KC_UP,          KC_DOWN,              NO_ALGR,                     NO_QUOT,                        KC_FN1,
             KC_LALT,        CTL_T(KC_ESC),
