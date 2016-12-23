@@ -25,6 +25,12 @@ enum custom_keycodes {
     WK_RSQ  // ] }
 };
 
+enum macro_id {
+    M_VRSN,
+    M_EPRM
+};
+
+
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     /* Keymap 0: Basic layer using swedish locale.
      *
@@ -177,7 +183,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 //WORKMAN
     [WORK] = KEYMAP(
             // left hand
-            WK_TLD,         KC_1,                 KC_2,                        KC_3,                           KC_4,                              KC_5,                                      KC_LEFT,
+            WK_TLD,      KC_1,                 KC_2,                        KC_3,                           KC_4,                              KC_5,                                      KC_LEFT,
             KC_TAB,         KC_Q,                 KC_D,                        KC_R,                           KC_W,                              KC_B,                                      TG(WORK),
             KC_BSPC,        KC_A,                 KC_S,                        KC_H,                           KC_T,                              KC_G,
             KC_LSFT,        CTL_T(KC_Z),          KC_X,                        KC_M,                           KC_C,                              KC_V,                                      ALL_T(KC_NO),
@@ -195,32 +201,6 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
             KC_PGUP,
             KC_PGDN,        KC_ENT,               KC_SPC
             ),
-};
-
-const uint16_t PROGMEM fn_actions[] = {
-    [1] = ACTION_LAYER_TAP_TOGGLE(SYMB)   // FN1 - Momentary Layer 1 (Symbols)
-};
-
-const macro_t * action_get_macro(keyrecord_t *record, uint8_t id, uint8_t opt) {
-    // MACRODOWN only works in this function
-    switch (id) {
-        case 0:
-
-            if (record->event.pressed) {
-                SEND_STRING(QMK_KEYBOARD "/" QMK_KEYMAP " @ " QMK_VERSION);
-            }
-
-            break;
-
-        case 1:
-
-            if (record->event.pressed) { // For resetting EEPROM
-                eeconfig_init();
-            }
-
-            break;
-    }
-    return MACRO_NONE;
 };
 
 void press_key_with_level_mods(uint16_t key) {
@@ -259,6 +239,21 @@ void press_key_with_level_mods(uint16_t key) {
     send_keyboard_report();
 }
 
+bool is_dead_key(uint16_t key) {
+    switch (key) {
+        case NO_GRV: // `
+        case NO_ACUT: // ´
+        case NO_TILD: // ~
+        case NO_CIRC: // ^
+            return true;
+
+            break;
+
+        default:
+            return false;
+    }
+}
+
 void override_key(keyrecord_t *record, uint16_t normal, uint16_t shifted) {
     const uint8_t shift = MOD_BIT(KC_LSFT) | MOD_BIT(KC_RSFT);
 
@@ -272,8 +267,40 @@ void override_key(keyrecord_t *record, uint16_t normal, uint16_t shifted) {
         }
 
         press_key_with_level_mods(target);
+
+        if (is_dead_key(target)) {
+            //Deadkey, add a space to autocomplete
+            register_code(KC_SPC);
+            unregister_code(KC_SPC);
+        }
     }
 }
+
+const uint16_t PROGMEM fn_actions[] = {
+    [1] = ACTION_LAYER_TAP_TOGGLE(SYMB)   // FN1 - Momentary Layer 1 (Symbols)
+};
+
+const macro_t * action_get_macro(keyrecord_t *record, uint8_t id, uint8_t opt) {
+    // MACRODOWN only works in this function
+    switch (id) {
+        case M_VRSN:
+
+            if (record->event.pressed) {
+                SEND_STRING(QMK_KEYBOARD "/" QMK_KEYMAP " @ " QMK_VERSION);
+            }
+
+            break;
+
+        case M_EPRM:
+
+            if (record->event.pressed) { // For resetting EEPROM
+                eeconfig_init();
+            }
+
+            break;
+    }
+    return MACRO_NONE;
+};
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     switch (keycode) {
@@ -324,7 +351,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
             break;
 
-        case WK_TLD: // ` ~
+        case WK_TLD:     // ` ~
             override_key(record, NO_GRV, NO_TILD);
 
             break;
