@@ -12,3 +12,7 @@ At the moment, it's a work in progress and probably not what you want to use.
 ## Keymap 3: Standard Workman
 
 ![Layer 3](layer3.png)
+
+
+## License
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2FLibbum%2FErgoDox-Libbum.svg?type=large)](https://app.fossa.io/projects/git%2Bgithub.com%2FLibbum%2FErgoDox-Libbum?ref=badge_large)
